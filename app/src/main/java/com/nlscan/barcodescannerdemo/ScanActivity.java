@@ -36,7 +36,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ScanActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener, BarcodeReader.BarcodeListener, BarcodeReader.TriggerListener {
+public class ScanActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener
+{
     Bundle bundle;
     String usrId, mScanType, msessioname, mlocation, msession, itemcode="", lookup="0";
     DBController controller;
@@ -46,9 +47,8 @@ public class ScanActivity extends AppCompatActivity implements AdapterView.OnIte
     TextView tvsessioname, tvlocationname, product_price,mproduname;
     RadioGroup radioGroup;
     RadioButton radioButton;
-
     EditText mbarcode, mqty, mlotno, mexpdate;
-    Button msave, mrest, mclosession, mresumesession;
+    Button msave, mrest, mclosession, mresumesession,startscan;
     PopupWindow mPopupWindow;
     LinearLayout linearLayout, locatinview, scanscection,withlookupsec;
     //scanner
@@ -63,7 +63,7 @@ public class ScanActivity extends AppCompatActivity implements AdapterView.OnIte
         linearLayout = (LinearLayout) findViewById(R.id.rl);
         controller = new DBController(this);
 
-        scannersetup();
+        //scannersetup();
 
         proddata=new ArrayList<>();
         bundle = getIntent().getExtras();
@@ -73,8 +73,7 @@ public class ScanActivity extends AppCompatActivity implements AdapterView.OnIte
         //initviews
         spin = (Spinner) findViewById(R.id.simplesessionSpinner);
         spin.setOnItemSelectedListener(this);
-
-
+        startscan =(Button)findViewById(R.id.btn_scan_for);
         tvsessioname = (TextView) findViewById(R.id.tv_sessionname);
         tvlocationname = (TextView) findViewById(R.id.tv_locationname);
         mbarcode = (EditText) findViewById(R.id.barcode);
@@ -161,51 +160,22 @@ public class ScanActivity extends AppCompatActivity implements AdapterView.OnIte
             msession = msessioname;
             mlocation = tvlocationname.getText().toString();
         }
-    }
 
-    private void scannersetup() {
-        // set lock the orientation
-        // otherwise, the onDestory will trigger when orientation changes
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        barcodeReader = SessionActivity.getBarcodeObject();
-        if (barcodeReader != null) {
-
-            // register bar code event listener
-            barcodeReader.addBarcodeListener(this);
-
-            // set the trigger mode to client control
-            try {
-                barcodeReader.setProperty(BarcodeReader.PROPERTY_TRIGGER_CONTROL_MODE,
-                        BarcodeReader.TRIGGER_CONTROL_MODE_CLIENT_CONTROL);
-            } catch (UnsupportedPropertyException e) {
-                Toast.makeText(this, "Failed to apply properties", Toast.LENGTH_SHORT).show();
-            }
-            // register trigger state change listener
-            barcodeReader.addTriggerListener(this);
-            Map<String, Object> properties = new HashMap<String, Object>();
-            // Set Symbologies On/Off
-            properties.put(BarcodeReader.PROPERTY_CODE_128_ENABLED, true);
-            properties.put(BarcodeReader.PROPERTY_GS1_128_ENABLED, true);
-            properties.put(BarcodeReader.PROPERTY_QR_CODE_ENABLED, true);
-            properties.put(BarcodeReader.PROPERTY_CODE_39_ENABLED, true);
-            properties.put(BarcodeReader.PROPERTY_DATAMATRIX_ENABLED, true);
-            properties.put(BarcodeReader.PROPERTY_UPC_A_ENABLE, true);
-            properties.put(BarcodeReader.PROPERTY_EAN_13_ENABLED, false);
-            properties.put(BarcodeReader.PROPERTY_AZTEC_ENABLED, false);
-            properties.put(BarcodeReader.PROPERTY_CODABAR_ENABLED, false);
-            properties.put(BarcodeReader.PROPERTY_INTERLEAVED_25_ENABLED, false);
-            properties.put(BarcodeReader.PROPERTY_PDF_417_ENABLED, false);
-            // Set Max Code 39 barcode length
-            properties.put(BarcodeReader.PROPERTY_CODE_39_MAXIMUM_LENGTH, 10);
-            // Turn on center decoding
-            properties.put(BarcodeReader.PROPERTY_CENTER_DECODE, true);
-            // Disable bad read response, handle in onFailureEvent
-            properties.put(BarcodeReader.PROPERTY_NOTIFICATION_BAD_READ_ENABLED, false);
-            // Apply the settings
-            barcodeReader.setProperties(properties);
+        if(lookup.equals("1"))
+        {
+            startscan.setVisibility(View.VISIBLE);
         }
+
+        startscan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkbarcodedata();
+            }
+        });
+
     }
+
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -254,8 +224,8 @@ public class ScanActivity extends AppCompatActivity implements AdapterView.OnIte
                 finishsession();
                 break;
             case R.id.btn_later:
-               // finish();
-                checkbarcodedata();
+                finish();
+                //checkbarcodedata();
                 break;
         }
 
@@ -404,46 +374,5 @@ public class ScanActivity extends AppCompatActivity implements AdapterView.OnIte
         mbarcode.requestFocus();
         product_price.setText("");
     }
-
-    @Override
-    public void onBarcodeEvent(final BarcodeReadEvent barcodeReadEvent) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mbarcode.setText(barcodeReadEvent.getBarcodeData());
-                mqty.setText("");
-                mproduname.requestFocus();
-            }
-        });
-    }
-
-    @Override
-    public void onFailureEvent(BarcodeFailureEvent barcodeFailureEvent) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(ScanActivity.this, "No data", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    @Override
-    public void onTriggerEvent(TriggerStateChangeEvent triggerStateChangeEvent) {
-        try {
-            // only handle trigger presses
-            // turn on/off aimer, illumination and decoding
-            barcodeReader.aim(triggerStateChangeEvent.getState());
-            barcodeReader.light(triggerStateChangeEvent.getState());
-            barcodeReader.decode(triggerStateChangeEvent.getState());
-
-        } catch (ScannerNotClaimedException e) {
-            e.printStackTrace();
-            Toast.makeText(this, "Scanner is not claimed", Toast.LENGTH_SHORT).show();
-        } catch (ScannerUnavailableException e) {
-            e.printStackTrace();
-            Toast.makeText(this, "Scanner unavailable", Toast.LENGTH_SHORT).show();
-        }
-    }
-
 
 }

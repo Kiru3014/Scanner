@@ -40,8 +40,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1.6"
                 android:gravity="center_vertical"
-                android:visibility="gone"
-               />
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tv_sessionname"
@@ -53,8 +52,7 @@
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:textStyle="normal"
-                android:visibility="gone"
-                />
+                android:visibility="gone" />
 
         </LinearLayout>
 
@@ -150,7 +148,7 @@
                         android:layout_weight="0.1"
                         android:gravity="center"
                         android:padding="10dp"
-                        android:text="Bar code : "
+                        android:text="Bar code :"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
                         android:textSize="15sp"
@@ -165,12 +163,23 @@
                         android:inputType="textCapCharacters"
                         android:nextFocusDown="@+id/barcode_qty"
                         android:padding="10dp"
+                        android:layout_marginRight="10dp"
                         android:singleLine="true"
                         android:textColor="@android:color/black"
                         android:textSize="16sp">
 
                         <requestFocus />
                     </EditText>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rounded"
+                        android:text="scan"
+                        android:visibility="gone"
+                        android:id="@+id/btn_scan_for"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="14sp" />
                 </LinearLayout>
 
                 <ImageView
@@ -258,6 +267,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0.8dp"
                     android:background="@android:color/black" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -297,86 +307,87 @@
                     android:id="@+id/withlookupsec"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="0.8dp"
-                    android:background="@android:color/black" />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0.8dp"
+                        android:background="@android:color/black" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.1"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:text="LOTNO : "
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp">
 
-                    <EditText
-                        android:id="@+id/barcode_lot"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:nextFocusDown="@+id/barcode_date"
-                        android:inputType="textCapCharacters"
-                        android:padding="10dp"
-                        android:singleLine="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="16sp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.1"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="LOTNO : "
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
 
-                        <requestFocus />
-                    </EditText>
-                </LinearLayout>
+                        <EditText
+                            android:id="@+id/barcode_lot"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:inputType="textCapCharacters"
+                            android:nextFocusDown="@+id/barcode_date"
+                            android:padding="10dp"
+                            android:singleLine="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="0.8dp"
-                    android:background="@android:color/black" />
+                            <requestFocus />
+                        </EditText>
+                    </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0.8dp"
+                        android:background="@android:color/black" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.1"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:text="Exp Date : "
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp">
 
-                    <EditText
-                        android:id="@+id/barcode_date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:imeOptions="actionDone"
-                        android:inputType="textCapCharacters"
-                        android:padding="10dp"
-                        android:singleLine="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="16sp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.1"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="Exp Date : "
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
 
-                        <requestFocus />
-                    </EditText>
-                </LinearLayout>
+                        <EditText
+                            android:id="@+id/barcode_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:imeOptions="actionDone"
+                            android:inputType="textCapCharacters"
+                            android:padding="10dp"
+                            android:singleLine="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp">
+
+                            <requestFocus />
+                        </EditText>
+                    </LinearLayout>
 
                 </LinearLayout>
 

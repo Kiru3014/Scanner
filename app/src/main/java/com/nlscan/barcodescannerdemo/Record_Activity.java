@@ -66,7 +66,7 @@ public class Record_Activity extends Activity {
 
         options.addAll(mydb.getallsessionforuser(userSharedPreferences.getUserid()));
         adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.spinneritem, options);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.spinneritem);
         filterby.setAdapter(adapter);
 
 
