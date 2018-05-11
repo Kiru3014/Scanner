@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/price_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical"
+    tools:context="com.nlscan.barcodescannerdemo.SessionActivity">
+
+
+    <LinearLayout
+        android:id="@+id/ll_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginTop="100dp"
+        android:padding="10dp">
+
+
+       <Spinner
+            android:id="@+id/simpleSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center_vertical" />
+
+        <RadioGroup
+            android:id="@+id/radiolookup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="2">
+
+            <RadioButton
+                android:id="@+id/radiowithlookup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="WITH Lookup"
+                android:textAllCaps="true"
+                android:textStyle="bold" />
+
+            <RadioButton
+                android:id="@+id/radiowithoutlook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="without Lookup"
+                android:textAllCaps="true"
+                android:textStyle="bold" />
+
+        </RadioGroup>
+
+
+        <Button
+            android:id="@+id/start_session"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_boder"
+            android:padding="5dp"
+            android:text="Start Session"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/ll_start"
+        android:src="@drawable/bg"/>
+
+    <Button
+        android:id="@+id/resume_session"
+        android:layout_width="155dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_start"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:layout_marginEnd="100dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/btn_boder"
+        android:text="Resumne Session"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold" />
+
+
+    <Button
+        android:id="@+id/edit_session"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/resume_session"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:layout_marginEnd="100dp"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:background="@drawable/btn_boder"
+        android:text="EDIT/DELETE ENTRYIES"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold" />
+</RelativeLayout>
