@@ -5,43 +5,41 @@
     android:background="@android:color/white"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/prodname"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:maxLines="2"
             android:layout_height="30dp"
-            android:textSize="16sp"
             android:textColor="@android:color/black"
-            android:layout_margin="20dp"
+            android:textSize="16sp"/>
 
-            />
+        <Button
+            android:id="@+id/close_popup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="close"/>
 
-
-    <Button
-        android:layout_width="wrap_content"
-        android:id="@+id/close_popup"
-        android:layout_alignParentEnd="true"
-        android:layout_height="wrap_content"
-
-        android:text="close" />
-
-    </RelativeLayout>
-
-    <ListView
-        android:id="@+id/list_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:background="@android:color/white" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/newlot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:text="NEW LOT ENTRY"/>
+        android:text="NEW LOT ENTRY" />
+
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@android:color/white" />
+
 
 </LinearLayout>

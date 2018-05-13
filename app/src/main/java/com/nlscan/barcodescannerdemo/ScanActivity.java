@@ -3,6 +3,8 @@ package com.nlscan.barcodescannerdemo;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -54,6 +56,7 @@ public class ScanActivity extends AppCompatActivity implements AdapterView.OnIte
     //scanner
     private BarcodeReader barcodeReader;
     ArrayList<String> proddata;
+    Thread splashTread;
 
 
     @Override
@@ -78,6 +81,7 @@ public class ScanActivity extends AppCompatActivity implements AdapterView.OnIte
         tvlocationname = (TextView) findViewById(R.id.tv_locationname);
         mbarcode = (EditText) findViewById(R.id.barcode);
         mqty = (EditText) findViewById(R.id.barcode_qty);
+        mqty.setText("1");
         mproduname = (TextView) findViewById(R.id.barcode_name);
         mlotno = (EditText) findViewById(R.id.barcode_lot);
         mexpdate = (EditText) findViewById(R.id.barcode_date);
@@ -173,6 +177,7 @@ public class ScanActivity extends AppCompatActivity implements AdapterView.OnIte
                 checkbarcodedata();
             }
         });
+
 
     }
 
