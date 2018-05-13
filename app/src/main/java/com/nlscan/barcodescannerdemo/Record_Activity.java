@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -182,13 +183,15 @@ public class Record_Activity extends Activity {
         mbtnsave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (prod_qty.isEmpty() || prod_session.isEmpty() || prod_lot.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Please Enter all Fields", Toast.LENGTH_LONG).show();
-                } else {
-                    mydb.updaterow(id, barcode, msessionname.getText().toString(), mdprouctqty.getText().toString(),
-                            mlocation.getText().toString(),  mlot.getText().toString(), mexprie.getText().toString());
-                    notifydatachnage(filterby.getSelectedItem().toString());
-                    dialog.dismiss();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
+                    if (prod_qty.isEmpty() || prod_session.isEmpty() || prod_lot.isEmpty()) {
+                        Toast.makeText(getApplicationContext(), "Please Enter all Fields", Toast.LENGTH_LONG).show();
+                    } else {
+                        mydb.updaterow(id, barcode, msessionname.getText().toString(), mdprouctqty.getText().toString(),
+                                mlocation.getText().toString(),  mlot.getText().toString(), mexprie.getText().toString());
+                        notifydatachnage(filterby.getSelectedItem().toString());
+                        dialog.dismiss();
+                    }
                 }
             }
         });
