@@ -168,7 +168,7 @@ public class ScanActivity extends AppCompatActivity implements AdapterView.OnIte
 
         if(lookup.equals("1"))
         {
-            startscan.setVisibility(View.VISIBLE);
+            startscan.setVisibility(View.GONE);
         }
 
         startscan.setOnClickListener(new View.OnClickListener() {
@@ -178,6 +178,15 @@ public class ScanActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
+        mbarcode.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    // code to execute when EditText loses focus
+                    checkbarcodedata();
+                }
+            }
+        });
 
     }
 
