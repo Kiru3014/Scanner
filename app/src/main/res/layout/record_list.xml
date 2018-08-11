@@ -22,9 +22,8 @@
 
         <Spinner
             android:id="@+id/filterby"
-            android:padding="10dp"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="60dp"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical">
 
@@ -60,6 +59,8 @@
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
+
+        android:paddingTop="30dp"
         android:id="@+id/list_records"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

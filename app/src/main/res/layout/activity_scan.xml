@@ -123,6 +123,87 @@
 
         </RadioGroup>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/btn_reset"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded"
+                android:gravity="center_vertical|center_horizontal"
+                android:padding="10dp"
+                android:text="REST"
+                android:textColor="#fff"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded"
+                android:gravity="center_vertical|center_horizontal"
+                android:padding="10dp"
+                android:text="SAVE"
+                android:textColor="#fff"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/btn_later"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded"
+                android:gravity="center_vertical|center_horizontal"
+                android:padding="10dp"
+                android:text="RESUME SCAN"
+                android:textColor="#fff"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_finish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded"
+                android:gravity="center_vertical|center_horizontal"
+                android:padding="10dp"
+                android:text="FINISH SCAN"
+                android:textColor="#fff"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/scan_sec"
@@ -158,12 +239,12 @@
                         android:id="@+id/barcode"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:layout_marginRight="10dp"
                         android:layout_weight="1"
                         android:background="@null"
                         android:inputType="textCapCharacters"
                         android:nextFocusDown="@+id/barcode_qty"
                         android:padding="10dp"
-                        android:layout_marginRight="10dp"
                         android:singleLine="true"
                         android:textColor="@android:color/black"
                         android:textSize="16sp">
@@ -172,14 +253,14 @@
                     </EditText>
 
                     <Button
+                        android:id="@+id/btn_scan_for"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rounded"
                         android:text="scan"
-                        android:visibility="gone"
-                        android:id="@+id/btn_scan_for"
                         android:textColor="@color/colorWhite"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:visibility="gone" />
                 </LinearLayout>
 
                 <ImageView
@@ -399,87 +480,6 @@
             </LinearLayout>
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-
-                <Button
-                    android:id="@+id/btn_reset"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/rounded"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:padding="10dp"
-                    android:text="REST"
-                    android:textColor="#fff"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/btn_save"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/rounded"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:padding="10dp"
-                    android:text="SAVE"
-                    android:textColor="#fff"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
-
-
-                <Button
-                    android:id="@+id/btn_later"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/rounded"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:padding="10dp"
-                    android:text="RESUME SCAN"
-                    android:textColor="#fff"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/btn_finish"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/rounded"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:padding="10dp"
-                    android:text="FINISH SCAN"
-                    android:textColor="#fff"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>

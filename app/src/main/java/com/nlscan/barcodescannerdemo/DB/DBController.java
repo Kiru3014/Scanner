@@ -426,7 +426,7 @@ public class DBController extends SQLiteOpenHelper {
         Cursor res;
         res=db.rawQuery("select * from " + Constants.TABLE_SCANITEMS+" where "+ Constants.COLUMN_SESSIONNAME+ "='"+Sesionname+"'", null);
 
-        res.moveToFirst();
+
 
         if (res.moveToFirst()) {
             do {
@@ -434,7 +434,7 @@ public class DBController extends SQLiteOpenHelper {
                         res.getString(res.getColumnIndex(COLUMN_QTY)), res.getString(res.getColumnIndex(COLUMN_LOTNO)),
                         res.getString(res.getColumnIndex(COLUMN_EXPIRYDATE)), res.getString(res.getColumnIndex(COLUMN_LOCATIONNAME)));
                 arrayList.add(rc);
-                res.moveToNext();
+
             } while (res.moveToNext());
         }
 
